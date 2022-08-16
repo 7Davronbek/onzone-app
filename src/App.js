@@ -33,7 +33,7 @@ function App() {
       <Router>
         <Navbar />
         <ScrollToTop />
-        
+
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/all-category" element={<AllCategory />} />
