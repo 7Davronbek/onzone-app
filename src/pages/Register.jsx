@@ -1,18 +1,20 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { API_PATH } from '../tools/constants'
 
 const Register = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [password2, setPassword2] = useState('')
+    const nav = useNavigate()
     const send = async (e) => {
         e.preventDefault()
         await axios.post(API_PATH + '/account/register/', { email, password, password2 })
             .then((res) => {
                 console.log(res);
+                nav('/login', {replace: true})
             })
             .catch((err) => {
                 console.log(err);
