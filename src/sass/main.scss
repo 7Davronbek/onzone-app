@@ -143,7 +143,7 @@ body {
             }
         }
 
-        .modal-content{
+        .modal-content {
             border-radius: 0;
             border: none;
         }
@@ -653,7 +653,7 @@ body {
                 }
             }
 
-            
+
 
             .mobileMenu {
                 margin-left: 6px;
@@ -1061,7 +1061,6 @@ body {
         }
 
     }
-
 
     .pop-products {
         padding: 50px 0 0 0;
@@ -1546,7 +1545,7 @@ body {
         }
 
         .swiper-wrapper {
-            
+
             @media(max-width: 767px) {}
         }
 
@@ -1607,7 +1606,7 @@ body {
             .swiper-wrapper {
                 display: flex;
                 flex-direction: column;
-                
+
                 @media(max-width: 767px) {
                     height: 95px !important;
                     flex-direction: row !important;
@@ -3200,7 +3199,6 @@ body {
             }
         }
     }
-
 
     .addCards {
         position: fixed;
