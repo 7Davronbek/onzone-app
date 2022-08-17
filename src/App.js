@@ -25,6 +25,7 @@ import Credits from "./pages/User/Credits";
 import Dashboard from "./pages/User/Dashboard";
 import MyCard from "./pages/User/MyCard";
 import Personal from "./pages/User/Personal";
+import Verify from "./pages/Verify";
 import Wishlist from "./pages/Wishlist";
 
 function App() {
@@ -41,11 +42,15 @@ function App() {
           <Route path="/sub-multi-category" element={<SubMultiCategory />} />
           <Route path="/product" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/verify" element={<Verify />} />
           <Route path="/add-card" element={<Scoring />} />
+
           <Route path="/user-dashboard" element={<Dashboard />} />
+          
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />
           <Route path="/credits" element={<Credits />} />

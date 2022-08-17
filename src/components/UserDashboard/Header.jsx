@@ -3,11 +3,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBan, faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
+import { API_PATH } from '../../tools/constants';
+import axios from 'axios'
 
 const Header = (args) => {
     const [modal_dashboard, setModal] = useState(false);
 
     const toggle = () => setModal(!modal_dashboard);
+
+    const exit = async () => {
+        await axios.get(API_PATH + '/account/logout/')
+            .then((res) => {
+                console.log(res);
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     return (
         <>
@@ -31,7 +43,7 @@ const Header = (args) => {
                     <div className="circle"><i className="fas fa-exclamation"></i><FontAwesomeIcon icon={faExclamation} /></div>
                     <h2>Akkauntdan chiqmoqchimisiz?</h2>
                     <div className="d-flex align-items-center justify-content-center">
-                        <button className="btn yes">Ha</button>
+                        <button onClick={exit} className="btn yes">Ha</button>
                         <button onClick={toggle} className="btn no">Yo'q</button>
                     </div>
                 </div>

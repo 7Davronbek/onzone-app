@@ -1,18 +1,22 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import { API_PATH } from '../tools/constants'
+import { Link, useNavigate } from 'react-router-dom'
+import { API_PATH, USER_EMAIL, USER_TOKEN } from '../tools/constants'
 import axios from 'axios'
 import { useState } from 'react'
+import { connect } from 'react-redux'
 
-const Login = () => {
+const Login = (props) => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    
-    const login = async(e) => {
+    const navigate = useNavigate()
+
+    const login = async (e) => {
         e.preventDefault()
-        await axios.post(API_PATH + '/account/login/', {email, password})
+        await axios.post(API_PATH + '/account/login/', { email, password })
             .then((res) => {
-                console.log(res);
+                localStorage.setItem(USER_TOKEN, res.data.token)
+                localStorage.setItem(USER_EMAIL, email)
+                navigate('/verify', {replace: true})
             })
             .catch((err) => {
                 console.log(err);
@@ -75,4 +79,11 @@ const Login = () => {
     )
 }
 
-export default Login
+const mapStateToProps = state => {
+    return {
+        userToken: state.auth.userToken,
+        userEmail: state.auth.userEmail,
+    }
+}
+
+export default connect(null, null)(Login)
