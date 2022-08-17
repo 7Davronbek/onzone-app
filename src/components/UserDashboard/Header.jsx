@@ -3,16 +3,23 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBan, faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
-import { API_PATH } from '../../tools/constants';
+import { API_PATH, USER_TOKEN } from '../../tools/constants';
 import axios from 'axios'
 
-const Header = (args) => {
+const Header = ({ args }) => {
     const [modal_dashboard, setModal] = useState(false);
 
     const toggle = () => setModal(!modal_dashboard);
 
+    const config = {
+        headers: {
+            'Accept': 'application/json',
+            'Authorization': 'Token ' + localStorage.getItem(USER_TOKEN)
+        },
+    }
+
     const exit = async () => {
-        await axios.get(API_PATH + '/account/logout/')
+        await axios.delete(API_PATH + '/account/logout/', config)
             .then((res) => {
                 console.log(res);
             })
