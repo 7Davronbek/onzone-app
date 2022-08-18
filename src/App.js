@@ -4,6 +4,7 @@ import FixedPhone from "./components/FixedPhone";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import Administration from "./pages/Admin/Administration";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AllCategory from "./pages/AllCategory";
 import Cart from "./pages/Cart";
@@ -34,7 +35,6 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <ScrollToTop />
 
         <Routes>
           <Route path="/" element={<Main />} />
@@ -53,6 +53,9 @@ function App() {
           <Route path="/user-dashboard" element={<Dashboard />} />
           <Route path="/admin-login" element={<AdminLogin />} />
 
+
+          <Route path="/administration" element={<Administration />} />
+
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />
           <Route path="/credits" element={<Credits />} />
@@ -68,6 +71,7 @@ function App() {
 
         <Footer />
         <FixedPhone />
+        <ScrollToTop />
       </Router>
     </>
   );

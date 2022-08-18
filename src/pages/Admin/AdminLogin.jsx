@@ -2,7 +2,7 @@ import React from 'react'
 import { API_PATH } from '../../tools/constants'
 import axios from 'axios'
 import { useState } from 'react'
-import AdminLayout from './AdminLayout'
+import AdminLayout from '../../components/AdminLayout'
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('')
