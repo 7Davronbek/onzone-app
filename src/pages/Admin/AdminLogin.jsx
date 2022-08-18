@@ -2,7 +2,6 @@ import React from 'react'
 import { API_PATH } from '../../tools/constants'
 import axios from 'axios'
 import { useState } from 'react'
-import AdminLayout from '../../components/AdminLayout'
 
 const AdminLogin = () => {
     const [email, setEmail] = useState('')
@@ -31,10 +30,6 @@ const AdminLogin = () => {
                     </div>
                 </div>
             </div>
-
-            <AdminLayout>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim numquam doloribus nemo possimus facere odio officia distinctio dolore, consequuntur, fugit, odit laboriosam dicta. Animi officia itaque voluptatem porro et consequatur?
-            </AdminLayout>
         </div>
     )
 }
