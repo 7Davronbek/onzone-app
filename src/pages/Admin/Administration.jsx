@@ -13,7 +13,9 @@ const Administration = () => {
                     </div>
                 </div>
             </div>
-            <AdminLayout></AdminLayout>
+            <AdminLayout>
+                
+            </AdminLayout>
         </>
     )
 }
