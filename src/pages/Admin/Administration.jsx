@@ -4,17 +4,10 @@ import AdminLayout from '../../components/AdminLayout'
 const Administration = () => {
     return (
         <>
-            <div className='Administration py-5'>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-12">
-                            <h1>Onzone Administration</h1>
-                        </div>
-                    </div>
-                </div>
+            <div className='Administration  '>
             </div>
             <AdminLayout>
-                
+                <h6>Choose category</h6>
             </AdminLayout>
         </>
     )
