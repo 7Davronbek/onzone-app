@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { connect } from 'react-redux'
 
-const Login = (props) => {
+const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
@@ -16,7 +16,7 @@ const Login = (props) => {
             .then((res) => {
                 localStorage.setItem(USER_TOKEN, res.data.token)
                 localStorage.setItem(USER_EMAIL, email)
-                navigate('/verify', {replace: true})
+                navigate('/verify', { replace: true })
             })
             .catch((err) => {
                 console.log(err);
@@ -65,7 +65,7 @@ const Login = (props) => {
                                         value={password}
                                     />
 
-                                    <a className="a" href="#">Parolni unutdingzmi?</a>
+                                    <a className="a">Parolni unutdingzmi?</a>
 
                                     <button type='submit' className="main btn">Kirish</button>
                                     <Link to={'/register'} className="btn"> Ro'yxatdan o'tish </Link>
@@ -79,11 +79,11 @@ const Login = (props) => {
     )
 }
 
-const mapStateToProps = state => {
-    return {
-        userToken: state.auth.userToken,
-        userEmail: state.auth.userEmail,
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         userToken: state.auth.userToken,
+//         userEmail: state.auth.userEmail,
+//     }
+// }
 
 export default connect(null, null)(Login)

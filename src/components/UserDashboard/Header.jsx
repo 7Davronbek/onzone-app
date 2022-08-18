@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBan, faSignOutAlt } from '@fortawesome/fontawesome-free-solid'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal } from 'reactstrap';
 import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import { API_PATH, USER_TOKEN } from '../../tools/constants';
 import axios from 'axios'

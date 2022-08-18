@@ -19,7 +19,7 @@ const Verify = (props) => {
         })
             .then((res) => {
                 console.log(res);
-                navigate('/user-dashboard', {replace: true})
+                navigate('/user-dashboard', { replace: true })
             })
             .catch((err) => {
                 console.log(err);
