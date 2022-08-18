@@ -4,6 +4,7 @@ import FixedPhone from "./components/FixedPhone";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminLogin from "./pages/Admin/AdminLogin";
 import AllCategory from "./pages/AllCategory";
 import Cart from "./pages/Cart";
 import Cooperation from "./pages/Cooperation";
@@ -50,7 +51,8 @@ function App() {
           <Route path="/add-card" element={<Scoring />} />
 
           <Route path="/user-dashboard" element={<Dashboard />} />
-          
+          <Route path="/admin-login" element={<AdminLogin />} />
+
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />
           <Route path="/credits" element={<Credits />} />
