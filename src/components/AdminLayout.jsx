@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const AdminLayout = (props) => {
+    const location = useLocation()
     return (
         <>
             <div className="container">
@@ -16,31 +17,31 @@ const AdminLayout = (props) => {
 
                     <h5>Products</h5>
 
-                    <Link className='user-info' to='/administration'>
+                    <Link className={`user-info ${location.pathname === '/administration' ? 'active' : ''}`} to='/administration'>
                         Attribute details
                     </Link>
 
-                    <Link className='user-info' to='/'>
+                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Attributes
                     </Link>
 
-                    <Link className='user-info' to='/'>
+                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Brands
                     </Link>
 
-                    <Link className='user-info' to='/'>
+                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Categorys
                     </Link>
 
-                    <Link className='user-info' to='/'>
+                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Products
                     </Link>
 
-                    <Link className='user-info' to='/'>
+                    <Link className={`user-info ${location.pathname === '/admin-sub-category' ? 'active' : ''}`} to='/admin-sub-category'>
                         Sub categorys
                     </Link>
 
-                    <Link className='user-info' to='/admin-type-category'>
+                    <Link className={`user-info ${location.pathname === '/admin-type-category' ? 'active' : ''}`} to='/admin-type-category'>
                         Type categorys
                     </Link>
 

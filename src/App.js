@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import Administration from "./pages/Admin/Administration";
 import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminSubCategory from "./pages/Admin/AdminSubCategory";
 import TypeCategory from "./pages/Admin/TypeCategory";
 import AllCategory from "./pages/AllCategory";
 import Cart from "./pages/Cart";
@@ -57,6 +58,7 @@ function App() {
 
           <Route path="/administration" element={<Administration />} />
           <Route path="/admin-type-category" element={<TypeCategory />} />
+          <Route path="/admin-sub-category" element={<AdminSubCategory />} />
 
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />

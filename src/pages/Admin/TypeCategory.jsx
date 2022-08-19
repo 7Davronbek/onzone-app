@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 const TypeCategory = () => {
     const [name, setName] = useState('')
     const [file, setFile] = useState('')
+    const [category, setCategory] = useState([])
 
     const config = {
         headers: {
@@ -19,7 +20,7 @@ const TypeCategory = () => {
     const getCategry = async () => {
         await axios.get(API_PATH + '/product/list-type-category/')
             .then((res) => {
-                console.log(res);
+                setCategory(res.data)
             })
             .catch((err) => {
                 console.log(err);
@@ -29,6 +30,9 @@ const TypeCategory = () => {
     const createCategory = async e => {
         e.preventDefault()
         const formData = new FormData()
+
+
+         
         formData.append('name', name)
         formData.append('image', file)
         console.log(file);
@@ -48,12 +52,25 @@ const TypeCategory = () => {
     return (
         <AdminLayout>
             <div className="TypeCategory">
-                <h6 className='mb-5'>Type category</h6>
+                <h5 className='mb-5'>Type category</h5>
                 <form onSubmit={createCategory} className="cards">
                     <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
-                    <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control" />
-                    <button className='btn btn-dark' type="submit">Enter</button>
+                    <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
+                    <button className='btn btn-dark ms-auto d-block' type="submit">Enter</button>
                 </form>
+
+                <div className="container py-5">
+                    <div className="row">
+                        {category && category.map((item, index) => (
+                            <div key={index} className="col-lg-3">
+                                <div className="img">
+                                    <img className='w-100' src={item.image} alt="" />
+                                </div>
+                                <h5>{item.name}</h5>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
         </AdminLayout>
     )

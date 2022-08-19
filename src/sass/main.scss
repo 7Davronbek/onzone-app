@@ -3682,6 +3682,11 @@ body {
             p {
                 font-size: 12px;
             }
+
+            &.active {
+                font-weight: 600;
+                color: $red;
+            }
         }
 
         .nav {
