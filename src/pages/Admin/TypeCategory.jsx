@@ -12,10 +12,6 @@ const TypeCategory = (props) => {
 
     const dispatch = useDispatch()
 
-    const formData = new FormData();
-    formData.append("name", name);
-    formData.append("image", file);
-
     useEffect(() => {
         // props.getCategory()
         dispatch(getCategory())
@@ -27,7 +23,7 @@ const TypeCategory = (props) => {
             <div className="TypeCategory">
                 <div className="container">
                     <div className="row">
-                        <form onSubmit={(formData) => props.createCategory(formData)} className="cards col-lg-4">
+                        <form onSubmit={(name, file) => props.createCategory(name, file)} className="cards col-lg-4">
                             <h5 className='mb-5'>Type category</h5>
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />

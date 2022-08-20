@@ -29,10 +29,12 @@ export const getCategory = () => async (dispatch) => {
     });
 };
 
-export const createCategory = (e, formData) => async (dispatch) => {
+export const createCategory = (e, name, file) => async (dispatch) => {
   e.preventDefault();
-  console.log(formData);
 
+  const formData = new FormData();
+  formData.append("name", name);
+  formData.append("image", file);
   await axios
     .post(API_PATH + "/admins/create-type-category/", formData, config)
     .then((res) => {
