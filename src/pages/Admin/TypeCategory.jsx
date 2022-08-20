@@ -16,11 +16,6 @@ const TypeCategory = (props) => {
     formData.append("name", name);
     formData.append("image", file);
 
-
-
-
-
-
     useEffect(() => {
         // props.getCategory()
         dispatch(getCategory())
@@ -37,7 +32,7 @@ const TypeCategory = (props) => {
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
                             {file &&
-                                <div><img src={URL.createObjectURL(file)} alt="" /></div>
+                                <div className='img'><img src={URL.createObjectURL(file)} alt="" /></div>
                             }
                             <button className='btn btn-dark ms-auto d-block' type="submit">Enter</button>
                         </form>
