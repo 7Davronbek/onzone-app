@@ -1,58 +1,37 @@
-import React from 'react'
 import { useState } from 'react'
 import AdminLayout from '../../components/AdminLayout'
-import { API_PATH } from '../../tools/constants'
-import axios from 'axios'
 import { useEffect } from 'react'
+import { connect,useDispatch } from 'react-redux'
 
-const TypeCategory = () => {
+import { createCategory, getCategory } from '../../redux/actions/adminActions'
+
+const TypeCategory = (props) => {
+    console.log(
+        props
+    );
     const [name, setName] = useState('')
     const [file, setFile] = useState('')
     const [category, setCategory] = useState([])
 
-    const config = {
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'multipart/form-data'
-        },
-    }
+    const dispatch = useDispatch()
 
-    const getCategry = async () => {
-        await axios.get(API_PATH + '/product/list-type-category/')
-            .then((res) => {
-                setCategory(res.data.results)
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
 
-    const createCategory = async e => {
-        e.preventDefault()
+    
 
-        const formData = new FormData()
-        formData.append('name', name)
-        formData.append('image', file)
 
-        await axios.post(API_PATH + '/admins/create-type-category/', formData, config)
-            .then((res) => {
-                getCategry()
-            })
-            .catch((err) => {
-                console.log(err);
-            })
-    }
 
     useEffect(() => {
-        getCategry()
-    }, [])
+        // props.getCategory()
+        dispatch(getCategory())
+        // getCategry()
+    }, [dispatch])
 
     return (
         <AdminLayout>
             <div className="TypeCategory">
                 <div className="container">
                     <div className="row">
-                        <form onSubmit={createCategory} className="cards col-lg-4">
+                        <form onSubmit={(name, file) => props.createCategory(name, file)} className="cards col-lg-4">
                             <h5 className='mb-5'>Type category</h5>
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
@@ -66,7 +45,7 @@ const TypeCategory = () => {
 
                 <div className="container py-5">
                     <div className="row">
-                        {category?.map((item, index) => (
+                        {props.categories?.map((item, index) => (
                             <div key={index} className="col-lg-3">
                                 <div className="img">
                                     <img className='w-100' src={item.image} alt="" />
@@ -81,4 +60,10 @@ const TypeCategory = () => {
     )
 }
 
-export default TypeCategory
+const mapStateToProps = state => {
+    return {
+        categories: state.admin.categories
+    }
+}
+
+export default connect(mapStateToProps, { createCategory, getCategory })(TypeCategory)

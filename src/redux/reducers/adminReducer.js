@@ -3,6 +3,7 @@ import { UPDATEADMIN } from "../types/admin";
 const initialState = {
   isLoading: false,
   error: false,
+  categories: []
 };
 
 export const adminReducer = (state = initialState, action) => {
