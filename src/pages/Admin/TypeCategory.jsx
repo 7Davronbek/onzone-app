@@ -1,22 +1,23 @@
 import { useState } from 'react'
 import AdminLayout from '../../components/AdminLayout'
 import { useEffect } from 'react'
-import { connect,useDispatch } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 
 import { createCategory, getCategory } from '../../redux/actions/adminActions'
 
 const TypeCategory = (props) => {
-    console.log(
-        props
-    );
     const [name, setName] = useState('')
     const [file, setFile] = useState('')
-    const [category, setCategory] = useState([])
+    // const [category, setCategory] = useState([])
 
     const dispatch = useDispatch()
 
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("image", file);
 
-    
+
+
 
 
 
@@ -31,7 +32,7 @@ const TypeCategory = (props) => {
             <div className="TypeCategory">
                 <div className="container">
                     <div className="row">
-                        <form onSubmit={(name, file) => props.createCategory(name, file)} className="cards col-lg-4">
+                        <form onSubmit={(formData) => props.createCategory(formData)} className="cards col-lg-4">
                             <h5 className='mb-5'>Type category</h5>
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />

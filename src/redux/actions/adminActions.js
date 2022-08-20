@@ -16,31 +16,28 @@ const config = {
   },
 };
 
-export const createCategory = (e, name, file) => async (dispatch) => {
-  e.preventDefault();
-
-  const formData = new FormData();
-  formData.append("name", name);
-  formData.append("image", file);
-
+export const getCategory = () => async (dispatch) => {
   await axios
-    .post(API_PATH + "/admins/create-type-category/", formData, config)
+    .get(API_PATH + "/product/list-type-category/")
     .then((res) => {
-      console.log(res);
-      //   getCategry();
+    //   console.log(res);
+      dispatch(updateAdmin({categories: res.data.results}))
+      //   setCategory(res.data.results);
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-export const getCategory = () => async (dispatch) => {
+export const createCategory = (e, formData) => async (dispatch) => {
+  e.preventDefault();
+  console.log(formData);
+
   await axios
-    .get(API_PATH + "/product/list-type-category/")
+    .post(API_PATH + "/admins/create-type-category/", formData, config)
     .then((res) => {
-      console.log(res);
-      dispatch(updateAdmin({categories: res.data.results}))
-      //   setCategory(res.data.results);
+    //   console.log(res);
+      //   getCategry();
     })
     .catch((err) => {
       console.log(err);
