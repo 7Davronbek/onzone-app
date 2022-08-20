@@ -20,8 +20,7 @@ const TypeCategory = () => {
     const getCategry = async () => {
         await axios.get(API_PATH + '/product/list-type-category/')
             .then((res) => {
-                setCategory(res.data.result)
-                console.log(res);
+                setCategory(res.data.results)
             })
             .catch((err) => {
                 console.log(err);
@@ -35,7 +34,7 @@ const TypeCategory = () => {
         formData.append('name', name)
         formData.append('image', file)
 
-        await axios.post(API_PATH + '/product/create-type-category/', formData, config)
+        await axios.post(API_PATH + '/admins/create-type-category/', formData, config)
             .then((res) => {
                 getCategry()
             })
@@ -51,15 +50,19 @@ const TypeCategory = () => {
     return (
         <AdminLayout>
             <div className="TypeCategory">
-                <h5 className='mb-5'>Type category</h5>
-                <form onSubmit={createCategory} className="cards">
-                    <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
-                    <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
-                    {file &&
-                        <div><img src={URL.createObjectURL(file)} alt="" /></div>
-                    }
-                    <button className='btn btn-dark ms-auto d-block' type="submit">Enter</button>
-                </form>
+                <div className="container">
+                    <div className="row">
+                        <form onSubmit={createCategory} className="cards col-lg-4">
+                            <h5 className='mb-5'>Type category</h5>
+                            <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
+                            <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
+                            {file &&
+                                <div><img src={URL.createObjectURL(file)} alt="" /></div>
+                            }
+                            <button className='btn btn-dark ms-auto d-block' type="submit">Enter</button>
+                        </form>
+                    </div>
+                </div>
 
                 <div className="container py-5">
                     <div className="row">

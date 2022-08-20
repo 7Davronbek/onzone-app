@@ -1,0 +1,1 @@
+export const UPDATEADMIN = 'UPDATE_ADMIN'

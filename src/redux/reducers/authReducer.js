@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
   error: false,
   userToken: localStorage.getItem(USER_TOKEN) || null,
-  userEmail: localStorage.getItem(USER_EMAIL) || null
+  userEmail: localStorage.getItem(USER_EMAIL) || null,
 };
 
 export const authReducer = (state = initialState, action) => {
