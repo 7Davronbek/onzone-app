@@ -29,6 +29,9 @@ export const getCategory = () => async (dispatch) => {
     });
 };
 
+
+
+
 export const createCategory = (e, name, file) => async (dispatch) => {
   e.preventDefault();
 
