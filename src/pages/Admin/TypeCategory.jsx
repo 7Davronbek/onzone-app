@@ -9,6 +9,7 @@ const TypeCategory = (props) => {
     const [name, setName] = useState('')
     const [file, setFile] = useState('')
     // const [category, setCategory] = useState([])
+console.log(props.categories);
 
     const dispatch = useDispatch()
 
@@ -37,14 +38,14 @@ const TypeCategory = (props) => {
 
                 <div className="container py-5">
                     <div className="row">
-                        {props.categories?.map((item, index) => (
+                        {/* {props.categories?.map((item, index) => (
                             <div key={index} className="col-lg-3">
                                 <div className="img">
                                     <img className='w-100' src={item.image} alt="" />
                                 </div>
                                 <h5>{item.name}</h5>
                             </div>
-                        ))}
+                        ))} */}
                     </div>
                 </div>
             </div>
@@ -57,5 +58,6 @@ const mapStateToProps = state => {
         categories: state.admin.categories
     }
 }
+
 
 export default connect(mapStateToProps, { createCategory, getCategory })(TypeCategory)
