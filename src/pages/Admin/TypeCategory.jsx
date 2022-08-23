@@ -3,15 +3,23 @@ import AdminLayout from '../../components/AdminLayout'
 import { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { createCategory, getCategory } from '../../redux/actions/adminActions'
+import { getCategory } from '../../redux/actions/adminActions'
+import axios from 'axios'
+import { API_PATH } from '../../tools/constants'
 
 const TypeCategory = (props) => {
     const [name, setName] = useState('')
     const [file, setFile] = useState('')
     // const [category, setCategory] = useState([])
-console.log(props.categories);
+    
 
     const dispatch = useDispatch()
+
+    const createCategory = async e => {
+        e.preventDefault()
+        
+        await axios.post(API_PATH + '/')
+    } 
 
     useEffect(() => {
         // props.getCategory()
@@ -24,7 +32,7 @@ console.log(props.categories);
             <div className="TypeCategory">
                 <div className="container">
                     <div className="row">
-                        <form onSubmit={(name, file) => props.createCategory(name, file)} className="cards col-lg-4">
+                        <form onSubmit={createCategory} className="cards col-lg-4">
                             <h5 className='mb-5'>Type category</h5>
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
@@ -60,4 +68,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { createCategory, getCategory })(TypeCategory)
+export default connect(mapStateToProps, { getCategory })(TypeCategory)
