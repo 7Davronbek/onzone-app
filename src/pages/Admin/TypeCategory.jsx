@@ -9,17 +9,29 @@ import { API_PATH } from '../../tools/constants'
 
 const TypeCategory = (props) => {
     const [name, setName] = useState('')
+    const [nameRu, setNameRu] = useState('')
     const [file, setFile] = useState('')
     // const [category, setCategory] = useState([])
-    
-
     const dispatch = useDispatch()
 
     const createCategory = async e => {
         e.preventDefault()
-        
-        await axios.post(API_PATH + '/')
-    } 
+
+        const formData = new FormData()
+        formData.append('image', file)
+
+        await axios.post(API_PATH + '/admins/create-type-category/', {
+            'image': file,
+            'translations': {
+                'uz': {
+                    'name': name
+                },
+                'ru': {
+                    'name': nameRu
+                }
+            }
+        })
+    }
 
     useEffect(() => {
         // props.getCategory()
@@ -34,7 +46,8 @@ const TypeCategory = (props) => {
                     <div className="row">
                         <form onSubmit={createCategory} className="cards col-lg-4">
                             <h5 className='mb-5'>Type category</h5>
-                            <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name...' type="text" className="form-control" />
+                            <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name uz...' type="text" className="form-control" />
+                            <input required onChange={e => setNameRu(e.target.value)} value={nameRu} placeholder='Name ru...' type="text" className="form-control my-4" />
                             <input required onChange={e => setFile(e.target.files[0])} type="file" className="form-control my-4" />
                             {file &&
                                 <div className='img'><img src={URL.createObjectURL(file)} alt="" /></div>
