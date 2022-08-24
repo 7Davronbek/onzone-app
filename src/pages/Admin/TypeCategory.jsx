@@ -14,6 +14,14 @@ const TypeCategory = (props) => {
     // const [category, setCategory] = useState([])
     const dispatch = useDispatch()
 
+    
+const config = {
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "multipart/form-data",
+    },
+  };
+
     const createCategory = async e => {
         e.preventDefault()
 
@@ -21,16 +29,16 @@ const TypeCategory = (props) => {
         formData.append('image', file)
 
         await axios.post(API_PATH + '/admins/create-type-category/', {
-            'image': file,
-            'translations': {
-                'uz': {
-                    'name': name
+            "image": file,
+            "translations": {
+                "uz": {
+                    "name": name
                 },
-                'ru': {
-                    'name': nameRu
+                "ru": {
+                    "name": nameRu
                 }
             }
-        })
+        }, config)
     }
 
     useEffect(() => {
