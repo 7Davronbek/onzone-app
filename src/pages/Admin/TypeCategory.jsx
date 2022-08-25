@@ -79,7 +79,7 @@ const TypeCategory = (props) => {
                             <h5 className='mb-5'>Type category</h5>
                             <input required onChange={e => setName(e.target.value)} value={name} placeholder='Name uz...' type="text" className="form-control" />
                             <input required onChange={e => setNameRu(e.target.value)} value={nameRu} placeholder='Name ru...' type="text" className="form-control my-4" />
-                            {/* <input required onChange={e => setFile(e.target.value)} type="text" className="form-control my-4" /> */}
+                            {/* <input required onChange={e => setFile(e.target.value)} type="text" className="form-control my-4" /> */}  
                             {/* {file &&
                                 <div className='img'><img src={URL.createObjectURL(file)} alt="" /></div>
                             } */}
