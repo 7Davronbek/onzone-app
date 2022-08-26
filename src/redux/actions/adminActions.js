@@ -9,19 +9,21 @@ export const updateAdmin = (state) => {
   };
 };
 
-// const config = {
-//   headers: {
-//     Accept: "application/json",
-//     "Content-Type": "multipart/form-data",
-//   },
-// };
+const config = {
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "multipart/form-data",
+  },
+};
 
-export const getCategory = () => async (dispatch) => {
+// GET
+export const getTypeCategory = () => async (dispatch) => {
   await axios
     .get(API_PATH + "/product/list-type-category/")
     .then((res) => {
+      dispatch(updateAdmin({ typeCategories: res.data.results }));
+      console.log(res);
       //   console.log(res);
-      dispatch(updateAdmin({ categories: res.data.results }));
       //   setCategory(res.data.results);
     })
     .catch((err) => {

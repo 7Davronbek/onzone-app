@@ -3,7 +3,7 @@ import AdminLayout from '../../components/AdminLayout'
 import { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { getCategory } from '../../redux/actions/adminActions'
+import { getTypeCategory } from '../../redux/actions/adminActions'
 import axios from 'axios'
 import { API_PATH } from '../../tools/constants'
 
@@ -38,7 +38,7 @@ const TypeCategory = (props) => {
     }
 
     useEffect(() => {
-        dispatch(getCategory())
+        dispatch(getTypeCategory())
     }, [dispatch])
 
     return (
@@ -61,7 +61,7 @@ const TypeCategory = (props) => {
 
                 <div className="container py-5">
                     <div className="row">
-                        {props.categories?.map((item, index) => (
+                        {props.typeCategories?.map((item, index) => (
                             <div key={index} className="col-lg-3">
                                 <div className="img">
                                     <img className='w-100' src={item.image} alt="" />
@@ -78,9 +78,9 @@ const TypeCategory = (props) => {
 
 const mapStateToProps = state => {
     return {
-        categories: state.admin.categories
+        typeCategories: state.admin.typeCategories
     }
 }
 
 
-export default connect(mapStateToProps, { getCategory })(TypeCategory)
+export default connect(mapStateToProps, { getTypeCategory })(TypeCategory)
