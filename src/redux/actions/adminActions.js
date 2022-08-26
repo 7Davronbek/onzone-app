@@ -9,12 +9,12 @@ export const updateAdmin = (state) => {
   };
 };
 
-const config = {
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "multipart/form-data",
-  },
-};
+// const config = {
+//   headers: {
+//     Accept: "application/json",
+//     "Content-Type": "multipart/form-data",
+//   },
+// };
 
 export const getCategory = () => async (dispatch) => {
   await axios

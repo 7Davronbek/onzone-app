@@ -11,7 +11,6 @@ const TypeCategory = (props) => {
     const [name, setName] = useState('')
     const [nameRu, setNameRu] = useState('')
     const [file, setFile] = useState('')
-    // const [category, setCategory] = useState([])
     const dispatch = useDispatch()
 
     const config = {
@@ -39,9 +38,7 @@ const TypeCategory = (props) => {
     }
 
     useEffect(() => {
-        // props.getCategory()
         dispatch(getCategory())
-        // getCategry()
     }, [dispatch])
 
     return (
