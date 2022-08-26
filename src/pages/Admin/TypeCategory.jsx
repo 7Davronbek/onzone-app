@@ -3,7 +3,7 @@ import AdminLayout from '../../components/AdminLayout'
 import { useEffect } from 'react'
 import { connect, useDispatch } from 'react-redux'
 
-import { getTypeCategory } from '../../redux/actions/adminActions'
+import { getTypeCategory, deleteTypeCategory } from '../../redux/actions/adminActions'
 import axios from 'axios'
 import { API_PATH } from '../../tools/constants'
 
@@ -30,7 +30,10 @@ const TypeCategory = (props) => {
 
         await axios.post(API_PATH + '/admins/create-type-category/', formData, config)
             .then(res => {
-                console.log(res);
+                dispatch(getTypeCategory())
+                setName('')
+                setNameRu('')
+                setFile('')
             })
             .catch(err => {
                 console.log(err);
@@ -62,11 +65,15 @@ const TypeCategory = (props) => {
                 <div className="container py-5">
                     <div className="row">
                         {props.typeCategories?.map((item, index) => (
-                            <div key={index} className="col-lg-3">
+                            <div key={index} className="col-lg-3 mb-4 h-100">
                                 <div className="img">
                                     <img className='w-100' src={item.image} alt="" />
                                 </div>
                                 <h5>{item.name}</h5>
+                                <div className="d-flex align-items-center justify-content-end mt-3">
+                                    <button className="btn btn-outline-warning mr-2">Edit</button>
+                                    <button onClick={() => props.deleteTypeCategory(item.id)} className="btn btn-outline-danger">Delete</button>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -83,4 +90,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { getTypeCategory })(TypeCategory)
+export default connect(mapStateToProps, { getTypeCategory, deleteTypeCategory })(TypeCategory)

@@ -16,7 +16,7 @@ const config = {
   },
 };
 
-// GET
+// GET TYPECATEGORY
 export const getTypeCategory = () => async (dispatch) => {
   await axios
     .get(API_PATH + "/product/list-type-category/")
@@ -30,6 +30,23 @@ export const getTypeCategory = () => async (dispatch) => {
       console.log(err);
     });
 };
+
+// DELETE TYPECATEGORY
+export const deleteTypeCategory = id => async (dispatch) => {
+    await axios.delete(API_PATH + `/admins/rud-type-category/${id}/`)
+        .then((res) => {
+            console.log(res);
+            dispatch(getTypeCategory())
+        })
+        .catch(err => {
+            console.log(err);
+        })
+}
+
+// UPDATE TYPECATEGORY
+export const updateTypeCategory = id => async (dispatch) => {
+    await axios.put(API_PATH + `/admins/rud-type-category/${id}/`, )
+}
 
 // export const postCategory = (e, name, nameRu, file) => async (dispatch) => {
 //   e.preventDefault();
