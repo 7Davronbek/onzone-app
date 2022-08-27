@@ -49,7 +49,6 @@ export const updateTypeCategory = (id) => async (dispatch) => {
   await axios.put(API_PATH + `/admins/rud-type-category/${id}/`);
 };
 
-
 // GET ALL CATEGORIES
 export const getCategries = () => async (dispatch) => {
   await axios
@@ -63,17 +62,32 @@ export const getCategries = () => async (dispatch) => {
     });
 };
 
-// DELETE CATEGORY BY ID 
-export const deleteCategory = id => async (dispatch) => {
-  await axios.delete(API_PATH + `/admins/rud-category/${id}/`)
-    .then(res => {
-      dispatch(getCategries())
+// DELETE CATEGORY BY ID
+export const deleteCategory = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-category/${id}/`)
+    .then((res) => {
+      dispatch(getCategries());
       console.log(res);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
+    });
+};
+
+// GET ALL SUB_CATEGORIES
+export const getSubCategories = () => async (dispatch) => {
+  await axios
+    .get(API_PATH + `/product/list-subcategory/`)
+    .then((res) => {
+      dispatch(updateAdmin({ subCategories: res.data.results }));
+      console.log(res);
     })
-}
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 
 
 
