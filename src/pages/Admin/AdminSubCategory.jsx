@@ -1,14 +1,18 @@
 import axios from 'axios'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { connect } from 'react-redux'
+import { connect, useDispatch } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
+import { getTypeCategory } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminSubCategory = (props) => {
     const [name, setName] = useState('')
     const [nameRu, setNameRu] = useState('')
     const [id, setId] = useState('')
+
+    const dispatch = useDispatch()
+
     const createSubCategory = async e => {
         e.preventDefault()
 
@@ -20,6 +24,7 @@ const AdminSubCategory = (props) => {
         //         console.log(err);
         //     })
     }
+
     return (
         <AdminLayout>
             <div className='AdminSubCategory'>
@@ -49,4 +54,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, null)(AdminSubCategory)  
+export default connect(mapStateToProps, { getTypeCategory })(AdminSubCategory)  
