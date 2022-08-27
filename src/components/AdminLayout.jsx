@@ -22,27 +22,27 @@ const AdminLayout = (props) => {
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
-                        Attributes
-                    </Link>
-
-                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
-                        Brands
-                    </Link>
-
-                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Products
                     </Link>
 
+                    <Link className={`user-info ${location.pathname === '/admin-attribute' ? 'active' : ''}`} to='/admin-attribute'>
+                        Attributes
+                    </Link>
+
+                    <Link className={`user-info ${location.pathname === '/admin-brand' ? 'active' : ''}`} to='/admin-brand'>
+                        Brands
+                    </Link>
+
                     <Link className={`user-info ${location.pathname === '/admin-sub-category' ? 'active' : ''}`} to='/admin-sub-category'>
-                        Sub categorys
+                        Sub categories
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/admin-category' ? 'active' : ''}`} to='/admin-category'>
-                        Category
+                        Categories
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/admin-type-category' ? 'active' : ''}`} to='/admin-type-category'>
-                        Type categorys
+                        Type categories
                     </Link>
 
                 </div>

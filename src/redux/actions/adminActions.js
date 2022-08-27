@@ -101,6 +101,54 @@ export const deleteSubCategory = (id) => async (dispatch) => {
     });
 };
 
+// GET ALL BRANDS
+export const getBrands = () => async (dispatch) => {
+  await axios
+    .get(API_PATH + `/product/list-brand/`)
+    .then((res) => {
+      dispatch(updateAdmin({ brands: res.data.results }));
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// DE:ETE BRAND BY ID
+export const deleteBrand = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-brand/${id}/`)
+    .then((res) => {
+      dispatch(getBrands());
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // export const postCategory = (e, name, nameRu, file) => async (dispatch) => {
 //   e.preventDefault();
 

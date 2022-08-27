@@ -6,7 +6,7 @@ import AdminLayout from '../../components/AdminLayout'
 import { getBrands, deleteBrand } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
-const AdminBrand = (props) => {
+const AdminAttribute = (props) => {
     const [name, setName] = useState('')
     const [nameRu, setNameRu] = useState('')
 
@@ -15,7 +15,7 @@ const AdminBrand = (props) => {
     const createBrand = async e => {
         e.preventDefault()
 
-        await axios.post(API_PATH + `/admins/create-brand/`, { name, name_ru: nameRu })
+        await axios.post(API_PATH + `/admins/create-attribute/`, { name, name_ru: nameRu })
             .then(res => {
                 dispatch(getBrands())
                 setName('')
@@ -36,7 +36,7 @@ const AdminBrand = (props) => {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mb-3">
-                            <h5>Brands</h5>
+                            <h5>Attributes</h5>
                         </div>
                         <form onSubmit={createBrand} className="col-lg-4">
                             <input onChange={e => setName(e.target.value)} value={name} className='form-control mb-3' type="text" placeholder='Name uz...' />
@@ -68,4 +68,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getBrands, deleteBrand })(AdminBrand)  
+export default connect(mapStateToProps, { getBrands, deleteBrand })(AdminAttribute)  

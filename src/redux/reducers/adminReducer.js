@@ -5,7 +5,8 @@ const initialState = {
   error: false,
   typeCategories: [],
   categories: [],
-  subCategories: []
+  subCategories: [],
+  brands: []
 };
 
 export const adminReducer = (state = initialState, action) => {
