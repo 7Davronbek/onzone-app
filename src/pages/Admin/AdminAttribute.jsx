@@ -28,7 +28,7 @@ const AdminAttribute = (props) => {
 
     useEffect(() => {
         props.getAttributes()
-    }, [props])
+    }, [])
 
     return (
         <AdminLayout>

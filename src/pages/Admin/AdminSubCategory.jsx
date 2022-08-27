@@ -31,7 +31,7 @@ const AdminSubCategory = (props) => {
     useEffect(() => {
         props.getCategries()
         props.getSubCategories()
-    }, [props])
+    }, [])
 
     return (
         <AdminLayout>

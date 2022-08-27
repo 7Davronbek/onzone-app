@@ -28,7 +28,7 @@ const AdminBrand = (props) => {
 
     useEffect(() => {
         props.getBrands()
-    }, [props])
+    }, [])
 
     return (
         <AdminLayout>
