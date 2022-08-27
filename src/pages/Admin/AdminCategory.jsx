@@ -3,7 +3,7 @@ import AdminLayout from '../../components/AdminLayout'
 import { connect, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { API_PATH } from '../../tools/constants'
-import { getTypeCategory } from '../../redux/actions/adminActions'
+import { getCategries, getTypeCategory } from '../../redux/actions/adminActions'
 
 const AdminCategory = (props) => {
     const [name, setName] = useState('')
@@ -18,7 +18,10 @@ const AdminCategory = (props) => {
 
         await axios.post(API_PATH + `/admins/create-category/`, { name, name_ru: nameRu, type_category })
             .then(res => {
-                console.log(res);
+                setName('')
+                setNameRu('')
+                setId(null)
+                dispatch(getCategries())
             })
             .catch(err => {
                 console.log(err);
@@ -28,6 +31,7 @@ const AdminCategory = (props) => {
 
     useEffect(() => {
         dispatch(getTypeCategory())
+        dispatch(getCategries())
     }, [dispatch])
 
     return (
@@ -52,6 +56,17 @@ const AdminCategory = (props) => {
                             <button type='submit' className="btn btn-dark">Send</button>
                         </form>
                     </div>
+
+                    <div className="row my-5">
+                        {props.categories && props.categories.map((item, index) => (
+                            <div key={item.id} className="col-lg-3 mb-4 h-100">
+                                <div className="cards">
+                                    <h6 className='mb-2'> id: {item.id}</h6>
+                                    <h5>{item.name}</h5>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </AdminLayout>
@@ -60,8 +75,9 @@ const AdminCategory = (props) => {
 
 const mapStateToProps = state => {
     return {
-        typeCategories: state.admin.typeCategories
+        typeCategories: state.admin.typeCategories,
+        categories: state.admin.categories
     }
 }
 
-export default connect(mapStateToProps, { getTypeCategory })(AdminCategory)
+export default connect(mapStateToProps, { getTypeCategory, getCategries })(AdminCategory)

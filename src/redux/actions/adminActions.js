@@ -22,7 +22,7 @@ export const getTypeCategory = () => async (dispatch) => {
     .get(API_PATH + "/product/list-type-category/")
     .then((res) => {
       dispatch(updateAdmin({ typeCategories: res.data.results }));
-      console.log(res);
+      // console.log(res);
       //   console.log(res);
       //   setCategory(res.data.results);
     })
@@ -32,21 +32,35 @@ export const getTypeCategory = () => async (dispatch) => {
 };
 
 // DELETE TYPECATEGORY
-export const deleteTypeCategory = id => async (dispatch) => {
-    await axios.delete(API_PATH + `/admins/rud-type-category/${id}/`)
-        .then((res) => {
-            console.log(res);
-            dispatch(getTypeCategory())
-        })
-        .catch(err => {
-            console.log(err);
-        })
-}
+export const deleteTypeCategory = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-type-category/${id}/`)
+    .then((res) => {
+      console.log(res);
+      dispatch(getTypeCategory());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // UPDATE TYPECATEGORY
-export const updateTypeCategory = id => async (dispatch) => {
-    await axios.put(API_PATH + `/admins/rud-type-category/${id}/`, )
-}
+export const updateTypeCategory = (id) => async (dispatch) => {
+  await axios.put(API_PATH + `/admins/rud-type-category/${id}/`);
+};
+
+// GET ALL CATEGORIES
+export const getCategries = () => async (dispatch) => {
+  await axios
+    .get(API_PATH + `/product/list-category`)
+    .then((res) => {
+      dispatch(updateAdmin({ categories: res.data.results }));
+      // console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // export const postCategory = (e, name, nameRu, file) => async (dispatch) => {
 //   e.preventDefault();
