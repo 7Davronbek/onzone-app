@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
-import { getTypeCategory } from '../../redux/actions/adminActions'
+import { getCategries } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminSubCategory = (props) => {
@@ -24,6 +24,10 @@ const AdminSubCategory = (props) => {
         //         console.log(err);
         //     })
     }
+
+    useEffect(() => {
+        props.getCategries()
+    }, [])
 
     return (
         <AdminLayout>
@@ -50,8 +54,8 @@ const AdminSubCategory = (props) => {
 
 const mapStateToProps = state => {
     return {
-        typeCategories: state.admin.typeCategories
+        categories: state.admin.categories
     }
 }
 
-export default connect(mapStateToProps, { getTypeCategory })(AdminSubCategory)  
+export default connect(mapStateToProps, { getCategries })(AdminSubCategory)  

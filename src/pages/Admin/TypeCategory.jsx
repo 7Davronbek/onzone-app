@@ -41,8 +41,8 @@ const TypeCategory = (props) => {
     }
 
     useEffect(() => {
-        dispatch(getTypeCategory())
-    }, [dispatch])
+        props.getTypeCategory()
+    }, [])
 
     return (
         <AdminLayout>
@@ -72,7 +72,7 @@ const TypeCategory = (props) => {
                                 <h5>{item.name}</h5>
                                 <div className="d-flex align-items-center justify-content-end mt-3">
                                     {/* <button className="btn btn-outline-warning mr-2">Edit</button> */}
-                                    <button onClick={() => props.deleteTypeCategory(item.id)} className="btn btn-outline-danger">Delete</button>
+                                    <button onClick={() => props.deleteTypeCategory(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
                             </div>
                         ))}
