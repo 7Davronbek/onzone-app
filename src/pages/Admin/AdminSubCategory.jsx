@@ -12,13 +12,13 @@ const AdminSubCategory = (props) => {
     const createSubCategory = async e => {
         e.preventDefault()
 
-        await axios.post(API_PATH + `/admins/create-subcategory/`, {name, nameRu, id})
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        // await axios.post(API_PATH + `/admins/create-subcategory/`, {name, nameRu, id})
+        //     .then(res => {
+        //         console.log(res);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     })
     }
     return (
         <AdminLayout>

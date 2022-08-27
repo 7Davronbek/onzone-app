@@ -30,15 +30,15 @@ const AdminLayout = (props) => {
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
-                        Categorys
-                    </Link>
-
-                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
                         Products
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/admin-sub-category' ? 'active' : ''}`} to='/admin-sub-category'>
                         Sub categorys
+                    </Link>
+
+                    <Link className={`user-info ${location.pathname === '/admin-category' ? 'active' : ''}`} to='/admin-category'>
+                        Category
                     </Link>
 
                     <Link className={`user-info ${location.pathname === '/admin-type-category' ? 'active' : ''}`} to='/admin-type-category'>

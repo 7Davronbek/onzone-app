@@ -4,6 +4,7 @@ import FixedPhone from "./components/FixedPhone";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminCategory from "./pages/Admin/AdminCategory";
 import Administration from "./pages/Admin/Administration";
 import AdminLogin from "./pages/Admin/AdminLogin";
 import AdminSubCategory from "./pages/Admin/AdminSubCategory";
@@ -58,6 +59,7 @@ function App() {
 
           <Route path="/administration" element={<Administration />} />
           <Route path="/admin-type-category" element={<TypeCategory />} />
+          <Route path="/admin-category" element={<AdminCategory />} />
           <Route path="/admin-sub-category" element={<AdminSubCategory />} />
 
           <Route path="/my-cards" element={<MyCard />} />
