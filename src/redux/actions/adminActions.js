@@ -81,28 +81,25 @@ export const getSubCategories = () => async (dispatch) => {
     .get(API_PATH + `/product/list-subcategory/`)
     .then((res) => {
       dispatch(updateAdmin({ subCategories: res.data.results }));
-      console.log(res);
+      // console.log(res);
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// DELETE SUB_CATEGORY BY ID
+export const deleteSubCategory = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-subcategory/${id}/`)
+    .then((res) => {
+      dispatch(getSubCategories());
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 
 // export const postCategory = (e, name, nameRu, file) => async (dispatch) => {
 //   e.preventDefault();

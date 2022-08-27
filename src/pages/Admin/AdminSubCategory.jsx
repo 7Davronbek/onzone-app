@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
-import { getCategries, getSubCategories } from '../../redux/actions/adminActions'
+import { getCategries, getSubCategories, deleteSubCategory } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminSubCategory = (props) => {
@@ -63,7 +63,7 @@ const AdminSubCategory = (props) => {
                                 <h5>{item.name}</h5>
                                 <div className="d-flex align-items-center justify-content-end mt-3">
                                     {/* <button className="btn btn-outline-warning mr-2">Edit</button> */}
-                                    <button onClick={() => props.deleteTypeCategory(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
+                                    <button onClick={() => props.deleteSubCategory(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
                             </div>
                         ))}
@@ -81,4 +81,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getCategries, getSubCategories })(AdminSubCategory)  
+export default connect(mapStateToProps, { getCategries, getSubCategories, deleteSubCategory })(AdminSubCategory)  
