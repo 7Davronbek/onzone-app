@@ -46,12 +46,12 @@ const AdminBrand = (props) => {
                         </form>
                     </div>
 
-                    <div className="row">
+                    <div className="row mt-5">
                         {props.brands && props.brands.map((item, index) => (
                             <div key={index} className="col-lg-3 mb-4 h-100 shadow p-3">
                                 <h5>{item.name}</h5>
                                 <div className="d-flex align-items-center justify-content-end mt-3">
-                                    <button onClick={() => props.deleteSubCategory(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
+                                    <button onClick={() => props.deleteBrand(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
                             </div>
                         ))}

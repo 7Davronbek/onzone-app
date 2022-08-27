@@ -54,7 +54,7 @@ const AdminSubCategory = (props) => {
                         </form>
                     </div>
 
-                    <div className="row">
+                    <div className="row mt-5">
                         {props.subCategories && props.subCategories.map((item, index) => (
                             <div key={index} className="col-lg-3 mb-4 h-100 shadow p-3">
                                 <div className="img">

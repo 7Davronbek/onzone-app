@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
-import { getBrands, deleteBrand } from '../../redux/actions/adminActions'
+import { getAttributes, deleteAttribute } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminAttribute = (props) => {
@@ -17,7 +17,7 @@ const AdminAttribute = (props) => {
 
         await axios.post(API_PATH + `/admins/create-attribute/`, { name, name_ru: nameRu })
             .then(res => {
-                dispatch(getBrands())
+                dispatch(getAttributes())
                 setName('')
                 setNameRu('')
             })
@@ -27,12 +27,12 @@ const AdminAttribute = (props) => {
     }
 
     useEffect(() => {
-        props.getBrands()
+        props.getAttributes()
     }, [])
 
     return (
         <AdminLayout>
-            <div className='AdminBrand'>
+            <div className='AdminAttribute'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mb-3">
@@ -47,11 +47,11 @@ const AdminAttribute = (props) => {
                     </div>
 
                     <div className="row">
-                        {props.brands && props.brands.map((item, index) => (
+                        {props.attributes && props.attributes.map((item, index) => (
                             <div key={index} className="col-lg-3 mb-4 h-100 shadow p-3">
                                 <h5>{item.name}</h5>
                                 <div className="d-flex align-items-center justify-content-end mt-3">
-                                    <button onClick={() => props.deleteSubCategory(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
+                                    <button onClick={() => props.deleteAttribute(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
                             </div>
                         ))}
@@ -64,8 +64,8 @@ const AdminAttribute = (props) => {
 
 const mapStateToProps = state => {
     return {
-        brands: state.admin.brands,
+        attributes: state.admin.attributes,
     }
 }
 
-export default connect(mapStateToProps, { getBrands, deleteBrand })(AdminAttribute)  
+export default connect(mapStateToProps, { getAttributes, deleteAttribute })(AdminAttribute)  

@@ -107,7 +107,6 @@ export const getBrands = () => async (dispatch) => {
     .get(API_PATH + `/product/list-brand/`)
     .then((res) => {
       dispatch(updateAdmin({ brands: res.data.results }));
-      console.log(res);
     })
     .catch((err) => {
       console.log(err);
@@ -117,7 +116,7 @@ export const getBrands = () => async (dispatch) => {
 // DE:ETE BRAND BY ID
 export const deleteBrand = (id) => async (dispatch) => {
   await axios
-    .delete(API_PATH + `/admins/rud-brand/${id}/`)
+    .delete(API_PATH + `/product/rud-brand/${id}/`)
     .then((res) => {
       dispatch(getBrands());
       console.log(res);
@@ -126,6 +125,34 @@ export const deleteBrand = (id) => async (dispatch) => {
       console.log(err);
     });
 };
+
+
+// GET ALL ATTRIBUTES
+export const getAttributes = () => async (dispatch) => {
+  await axios
+    .get(API_PATH + `/product/list-attribute/`)
+    .then((res) => {
+      console.log(res);
+      dispatch(updateAdmin({ attributes: res.data.results }));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// DE:ETE ATTRIBUTE BY ID
+export const deleteAttribute = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-attribute/${id}/`)
+    .then((res) => {
+      dispatch(getAttributes());
+      console.log(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
 
 
 
