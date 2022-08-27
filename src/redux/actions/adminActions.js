@@ -49,6 +49,7 @@ export const updateTypeCategory = (id) => async (dispatch) => {
   await axios.put(API_PATH + `/admins/rud-type-category/${id}/`);
 };
 
+
 // GET ALL CATEGORIES
 export const getCategries = () => async (dispatch) => {
   await axios
@@ -61,6 +62,33 @@ export const getCategries = () => async (dispatch) => {
       console.log(err);
     });
 };
+
+// DELETE CATEGORY BY ID 
+export const deleteCategory = id => async (dispatch) => {
+  await axios.delete(API_PATH + `/admins/rud-category/${id}/`)
+    .then(res => {
+      dispatch(getCategries())
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // export const postCategory = (e, name, nameRu, file) => async (dispatch) => {
 //   e.preventDefault();

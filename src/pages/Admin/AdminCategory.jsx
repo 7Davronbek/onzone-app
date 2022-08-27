@@ -3,7 +3,8 @@ import AdminLayout from '../../components/AdminLayout'
 import { connect, useDispatch } from 'react-redux'
 import axios from 'axios'
 import { API_PATH } from '../../tools/constants'
-import { getCategries, getTypeCategory } from '../../redux/actions/adminActions'
+
+import { getCategries, getTypeCategory, deleteCategory } from '../../redux/actions/adminActions'
 
 const AdminCategory = (props) => {
     const [name, setName] = useState('')
@@ -45,9 +46,9 @@ const AdminCategory = (props) => {
 
                         </div>
                         <form onSubmit={createCategory} className="col-lg-4">
-                            <input onChange={e => setName(e.target.value)} value={name} className='form-control mb-3' type="text" placeholder='Name uz...' />
-                            <input onChange={e => setNameRu(e.target.value)} value={nameRu} className='form-control mb-3' type="text" placeholder='Name ru...' />
-                            <select onChange={e => setId(e.target.value)} className='form-control mb-3'>
+                            <input required onChange={e => setName(e.target.value)} value={name} className='form-control mb-3' type="text" placeholder='Name uz...' />
+                            <input required onChange={e => setNameRu(e.target.value)} value={nameRu} className='form-control mb-3' type="text" placeholder='Name ru...' />
+                            <select required onChange={e => setId(e.target.value)} className='form-control mb-3'>
                                 <option className='form-control' value="0">------------</option>
                                 {props.typeCategories && props.typeCategories.map((item, index) => (
                                     <option key={item.id} className='form-control' value={item.id}>{item.name}</option>
@@ -59,10 +60,14 @@ const AdminCategory = (props) => {
 
                     <div className="row my-5">
                         {props.categories && props.categories.map((item, index) => (
-                            <div key={item.id} className="col-lg-3 mb-4 h-100">
+                            <div key={item.id} className="col-lg-3 mb-4 h-100 shadow p-3">
                                 <div className="cards">
                                     <h6 className='mb-2'> id: {item.id}</h6>
                                     <h5>{item.name}</h5>
+                                    <div className="d-flex align-items-center justify-content-end mt-3">
+                                        {/* <button className="btn btn-outline-warning mr-2">Edit</button> */}
+                                        <button onClick={() => props.deleteCategory(item.id)} className="btn btn-outline-danger">Delete</button>
+                                    </div>
                                 </div>
                             </div>
                         ))}
@@ -80,4 +85,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getTypeCategory, getCategries })(AdminCategory)
+export default connect(mapStateToProps, { getTypeCategory, getCategries, deleteCategory })(AdminCategory)
