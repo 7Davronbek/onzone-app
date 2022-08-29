@@ -21,7 +21,7 @@ const AdminLayout = (props) => {
                         Attribute details
                     </Link>
 
-                    <Link className={`user-info ${location.pathname === '/' ? 'active' : ''}`} to='/'>
+                    <Link className={`user-info ${location.pathname === '/admin-product' ? 'active' : ''}`} to='/admin-product'>
                         Products
                     </Link>
 

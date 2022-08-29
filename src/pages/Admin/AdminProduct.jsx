@@ -6,7 +6,7 @@ import AdminLayout from '../../components/AdminLayout'
 import { getAttributes, deleteAttribute } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
-const AdminAttribute = (props) => {
+const AdminProduct = (props) => {
     const [name, setName] = useState('')
     const [nameRu, setNameRu] = useState('')
 
@@ -32,11 +32,11 @@ const AdminAttribute = (props) => {
 
     return (
         <AdminLayout>
-            <div className='AdminAttribute'>
+            <div className='AdminProduct'>
                 <div className="container">
                     <div className="row">
                         <div className="col-12 mb-3">
-                            <h5>Attributes</h5>
+                            <h5>Products</h5>
                         </div>
                         <form onSubmit={createBrand} className="col-lg-4">
                             <input onChange={e => setName(e.target.value)} value={name} className='form-control mb-3' type="text" placeholder='Name uz...' />
@@ -68,4 +68,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, { getAttributes, deleteAttribute })(AdminAttribute)  
+export default connect(mapStateToProps, { getAttributes, deleteAttribute })(AdminProduct)  

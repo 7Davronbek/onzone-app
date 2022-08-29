@@ -9,6 +9,7 @@ import AdminBrand from "./pages/Admin/AdminBrand";
 import AdminCategory from "./pages/Admin/AdminCategory";
 import Administration from "./pages/Admin/Administration";
 import AdminLogin from "./pages/Admin/AdminLogin";
+import AdminProduct from "./pages/Admin/AdminProduct";
 import AdminSubCategory from "./pages/Admin/AdminSubCategory";
 import TypeCategory from "./pages/Admin/TypeCategory";
 import AllCategory from "./pages/AllCategory";
@@ -65,6 +66,7 @@ function App() {
           <Route path="/admin-sub-category" element={<AdminSubCategory />} />
           <Route path="/admin-brand" element={<AdminBrand />} />
           <Route path="/admin-attribute" element={<AdminAttribute />} />
+          <Route path="/admin-product" element={<AdminProduct />} />
 
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />
