@@ -11,7 +11,7 @@ const AdminProduct = (props) => {
     const [nameRu, setNameRu] = useState('')
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
-    const [attribute, setAttribute] = useState('')
+    const [attribute, setAttribute] = useState([])
 
     const dispatch = useDispatch()
 
@@ -70,6 +70,8 @@ const AdminProduct = (props) => {
                                     <option key={item.id} className='form-control' value={item.id}>{item.name}</option>
                                 ))}
                             </select>
+
+                            <button className="btn btn-outline-primary d-block mb-4 mx-auto">Add attribute</button>
 
                             <button type='submit' className="btn btn-dark">Send</button>
                         </form>
