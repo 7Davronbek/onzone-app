@@ -132,7 +132,7 @@ export const getAttributes = () => async (dispatch) => {
   await axios
     .get(API_PATH + `/product/list-attribute/`)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       dispatch(updateAdmin({ attributes: res.data.results }));
     })
     .catch((err) => {
