@@ -18,14 +18,14 @@ const AdminProduct = (props) => {
     const createBrand = async e => {
         e.preventDefault()
 
-        await axios.post(API_PATH + `/admins/create-product/`, { name, name_ru: nameRu, brand: Number(brand), category: Number(category), attribute: Number(attribute) })
+        await axios.post(API_PATH + `/admins/create-product/`, { name, name_ru: nameRu, brand: Number(brand), category: Number(category), attribute: attribute })
             .then(res => {
                 // dispatch(getAttributes())
                 setName('')
                 setNameRu('')
                 setBrand('')
                 setCategory('')
-                setAttribute('')
+                setAttribute([])
             })
             .catch(err => {
                 console.log(err);
@@ -37,6 +37,17 @@ const AdminProduct = (props) => {
         props.getSubCategories()
         props.getAttributes()
     }, [])
+
+    const addTask = e => {
+        setAttribute(current => [...current, e.target.value])
+    }
+
+    const deleteAttr = id => {
+        setAttribute([
+            ...attribute.slice(0, id),
+            ...attribute.slice(id + 1, attribute.length)
+        ])
+    }
 
     return (
         <AdminLayout>
@@ -64,14 +75,19 @@ const AdminProduct = (props) => {
                                 ))}
                             </select>
 
-                            <select onChange={e => setAttribute(e.target.value)} className='form-control mb-3'>
+                            <select onChange={e => addTask(e)} className='form-control mb-3'>
                                 <option className='form-control' value="0">Choose attribute</option>
                                 {props.attributes && props.attributes.map((item, index) => (
                                     <option key={item.id} className='form-control' value={item.id}>{item.name}</option>
                                 ))}
                             </select>
 
-                            <button className="btn btn-outline-primary d-block mb-4 mx-auto">Add attribute</button>
+                            {attribute?.map((item, index) => (
+                                <h5 key={index}>{item} <button onClick={(id) => deleteAttr(index)} className="btn btn-outline-danger ml-2">Delete</button></h5>
+                            ))}
+                            {/* <h5>{tasks}</h5> */}
+
+                            {/* <button className="btn btn-outline-primary d-block mb-4 mx-auto">Add attribute</button> */}
 
                             <button type='submit' className="btn btn-dark">Send</button>
                         </form>
@@ -88,8 +104,8 @@ const AdminProduct = (props) => {
                         ))} */}
                     </div>
                 </div>
-            </div>
-        </AdminLayout>
+            </div >
+        </AdminLayout >
     )
 }
 
