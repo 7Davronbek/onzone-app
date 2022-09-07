@@ -7,7 +7,8 @@ const initialState = {
   categories: [],
   subCategories: [],
   brands: [],
-  attributes: []
+  attributes: [],
+  products: []
 };
 
 export const adminReducer = (state = initialState, action) => {

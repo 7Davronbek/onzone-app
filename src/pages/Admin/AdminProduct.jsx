@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { connect, useDispatch } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
-import { getAttributes, getBrands, getSubCategories, deleteAttribute } from '../../redux/actions/adminActions'
+import { getAttributes, getBrands, getSubCategories, deleteProduct, getProducts } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminProduct = (props) => {
@@ -26,6 +26,7 @@ const AdminProduct = (props) => {
                 setBrand('')
                 setCategory('')
                 setAttribute([])
+                props.getProducts()
             })
             .catch(err => {
                 console.log(err);
@@ -36,6 +37,7 @@ const AdminProduct = (props) => {
         props.getBrands()
         props.getSubCategories()
         props.getAttributes()
+        props.getProducts()
     }, [])
 
     const addTask = e => {
@@ -94,14 +96,14 @@ const AdminProduct = (props) => {
                     </div>
 
                     <div className="row mt-5">
-                        {/* {props.attributes && props.attributes.map((item, index) => (
+                        {props.products && props.products.map((item, index) => (
                             <div key={index} className="col-lg-3 mb-4 h-100 shadow p-3">
                                 <h5>{item.name}</h5>
                                 <div className="d-flex align-items-center justify-content-end mt-3">
-                                    <button onClick={() => props.deleteAttribute(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
+                                    <button onClick={() => props.deleteProduct(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
                             </div>
-                        ))} */}
+                        ))}
                     </div>
                 </div>
             </div >
@@ -114,7 +116,8 @@ const mapStateToProps = state => {
         brands: state.admin.brands,
         subCategories: state.admin.subCategories,
         attributes: state.admin.attributes,
+        products: state.admin.products,
     }
 }
 
-export default connect(mapStateToProps, { getAttributes, getBrands, getSubCategories, deleteAttribute })(AdminProduct)  
+export default connect(mapStateToProps, { getProducts, getAttributes, getBrands, getSubCategories, deleteProduct })(AdminProduct)  

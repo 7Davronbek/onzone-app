@@ -126,7 +126,6 @@ export const deleteBrand = (id) => async (dispatch) => {
     });
 };
 
-
 // GET ALL ATTRIBUTES
 export const getAttributes = () => async (dispatch) => {
   await axios
@@ -140,18 +139,43 @@ export const getAttributes = () => async (dispatch) => {
     });
 };
 
-// DE:ETE ATTRIBUTE BY ID
+// DELETE ATTRIBUTE BY ID
 export const deleteAttribute = (id) => async (dispatch) => {
   await axios
     .delete(API_PATH + `/admins/rud-attribute/${id}/`)
     .then((res) => {
       dispatch(getAttributes());
-      console.log(res);
     })
     .catch((err) => {
       console.log(err);
     });
 };
+
+// GET ALL PRODUCTS
+export const getProducts = () => async (dispatch) => {
+  await axios
+    .get(API_PATH + `/product/list-product/`)
+    .then((res) => {
+      dispatch(updateAdmin({ products: res.data.results }));
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+// DELETE PRODUCT BY ID
+export const deleteProduct = (id) => async (dispatch) => {
+  await axios
+    .delete(API_PATH + `/admins/rud-product/${id}/`)
+    .then((res) => {
+      dispatch(getProducts());
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+
 
 
 
