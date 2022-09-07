@@ -157,7 +157,6 @@ export const getProducts = () => async (dispatch) => {
     .get(API_PATH + `/product/list-product/`)
     .then((res) => {
       dispatch(updateAdmin({ products: res.data.results }));
-      console.log(res);
     })
     .catch((err) => {
       console.log(err);

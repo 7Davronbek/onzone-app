@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminAttribute from "./pages/Admin/AdminAttribute";
+import AdminAttributeDetail from "./pages/Admin/AdminAttributeDetail";
 import AdminBrand from "./pages/Admin/AdminBrand";
 import AdminCategory from "./pages/Admin/AdminCategory";
 import Administration from "./pages/Admin/Administration";
@@ -67,6 +68,7 @@ function App() {
           <Route path="/admin-brand" element={<AdminBrand />} />
           <Route path="/admin-attribute" element={<AdminAttribute />} />
           <Route path="/admin-product" element={<AdminProduct />} />
+          <Route path="/admin-attribute-detail" element={<AdminAttributeDetail />} />
 
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import { connect, useDispatch } from 'react-redux'
+import { connect } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
 import { getAttributes, getBrands, getSubCategories, deleteProduct, getProducts } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
@@ -12,8 +12,6 @@ const AdminProduct = (props) => {
     const [brand, setBrand] = useState('')
     const [category, setCategory] = useState('')
     const [attribute, setAttribute] = useState([])
-
-    const dispatch = useDispatch()
 
     const createBrand = async e => {
         e.preventDefault()
