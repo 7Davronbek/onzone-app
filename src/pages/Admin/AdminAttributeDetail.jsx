@@ -1,26 +1,24 @@
 import axios from 'axios'
-import React, { useEffect } from 'react'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import AdminLayout from '../../components/AdminLayout'
 import { getAttributes, deleteProduct, getProducts } from '../../redux/actions/adminActions'
 import { API_PATH } from '../../tools/constants'
 
 const AdminAttributeDetail = (props) => {
-    const [name, setName] = useState('')
-    const [nameRu, setNameRu] = useState('')
-    const [brand, setBrand] = useState('')
-    const [category, setCategory] = useState('')
+    const [key, setKey] = useState('')
+    const [keyRu, setKeyRu] = useState('')
+    const [value, setValue] = useState('')
+    const [valueRu, setValueRu] = useState('')
+    const [product, setProduct] = useState('')
+    const [attribute, setAttribute] = useState('')
 
     const createAttributeDetail = async e => {
         e.preventDefault()
 
-        await axios.post(API_PATH + `/admins/create-product/`, { name, name_ru: nameRu, brand: Number(brand), category: Number(category) })
+        await axios.post(API_PATH + `/admins/create-attribute-detail/`, { key, key_ru: keyRu, value, value_ru: valueRu, product, attribute })
             .then(res => {
-                setName('')
-                setNameRu('')
-                setBrand('')
-                setCategory('')
+                console.log(res);
             })
             .catch(err => {
                 console.log(err);
@@ -43,14 +41,14 @@ const AdminAttributeDetail = (props) => {
                         </div>
                         <form onSubmit={createAttributeDetail} className="col-lg-7">
 
-                            <select onChange={e => setBrand(e.target.value)} className='form-control mb-3'>
+                            <select onChange={e => setAttribute(e.target.value)} className='form-control mb-3'>
                                 <option className='form-control' value="0">Choose brand</option>
                                 {props.attributes && props.attributes.map((item) => (
                                     <option key={item.id} className='form-control' value={item.id}>{item.name}</option>
                                 ))}
                             </select>
 
-                            <select onChange={e => setCategory(e.target.value)} className='form-control mb-3'>
+                            <select onChange={e => setProduct(e.target.value)} className='form-control mb-3'>
                                 <option className='form-control' value="0">Choose category</option>
                                 {props.products && props.products.map((item) => (
                                     <option key={item.id} className='form-control' value={item.id}>{item.name}</option>
@@ -58,13 +56,13 @@ const AdminAttributeDetail = (props) => {
                             </select>
 
                             <div className="d-flex align-items-center mb-3">
-                                <input placeholder='Key' type="text" className='form-control' />
-                                <input placeholder='Key ru' type="text" className='form-control ml-2' />
+                                <input value={key} onChange={e => setKey(e.target.value)} placeholder='Key' type="text" className='form-control' />
+                                <input value={keyRu} onChange={e => setKeyRu(e.target.value)} placeholder='Key ru' type="text" className='form-control ml-2' />
                             </div>
 
                             <div className="d-flex align-items-center mb-3">
-                                <input placeholder='Value' type="text" className='form-control' />
-                                <input placeholder='Value ru' type="text" className='form-control ml-2' />
+                                <input value={value} onChange={e => setValue(e.target.value)} placeholder='Value' type="text" className='form-control' />
+                                <input value={valueRu} onChange={e => setValueRu(e.target.value)} placeholder='Value ru' type="text" className='form-control ml-2' />
                             </div>
 
                             <button type='submit' className="btn btn-dark">Send</button>
