@@ -97,8 +97,22 @@ const AdminProduct = (props) => {
 
                     <div className="row mt-5">
                         {props.products && props.products.map((item, index) => (
-                            <div key={index} className="col-lg-3 mb-4 h-100 shadow p-3">
+                            <div key={index} className="col-lg-4 mb-4 h-100 shadow p-3">
+                                {item.product_images && item.product_images.map((item2) => (
+                                    <>
+                                        <img className='w-100' src={item2.image} alt="" />
+                                    </>
+                                ))}
                                 <h5>{item.name}</h5>
+                                {item.brand &&
+                                    <h6>Brand id: {item.brand}</h6>
+                                }
+                                {item.get_partner_price &&
+                                    <>
+                                        <p className='my-2'>Discount: {item.get_partner_price.get_discount}</p>
+                                        <p>Price: {item.get_partner_price.price}</p>
+                                    </>
+                                }
                                 <div className="d-flex align-items-center justify-content-end mt-3">
                                     <button onClick={() => props.deleteProduct(item.id)} className="btn"><img src="/image/icon/delete.svg" alt="" /></button>
                                 </div>
