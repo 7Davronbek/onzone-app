@@ -4,15 +4,6 @@ import FixedPhone from "./components/FixedPhone";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
-import AdminAttribute from "./pages/Admin/AdminAttribute";
-import AdminAttributeDetail from "./pages/Admin/AdminAttributeDetail";
-import AdminBrand from "./pages/Admin/AdminBrand";
-import AdminCategory from "./pages/Admin/AdminCategory";
-import Administration from "./pages/Admin/Administration";
-import AdminLogin from "./pages/Admin/AdminLogin";
-import AdminProduct from "./pages/Admin/AdminProduct";
-import AdminSubCategory from "./pages/Admin/AdminSubCategory";
-import TypeCategory from "./pages/Admin/TypeCategory";
 import AllCategory from "./pages/AllCategory";
 import Cart from "./pages/Cart";
 import Cooperation from "./pages/Cooperation";
@@ -58,17 +49,6 @@ function App() {
           <Route path="/add-card" element={<Scoring />} />
 
           <Route path="/user-dashboard" element={<Dashboard />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-
-
-          <Route path="/administration" element={<Administration />} />
-          <Route path="/admin-type-category" element={<TypeCategory />} />
-          <Route path="/admin-category" element={<AdminCategory />} />
-          <Route path="/admin-sub-category" element={<AdminSubCategory />} />
-          <Route path="/admin-brand" element={<AdminBrand />} />
-          <Route path="/admin-attribute" element={<AdminAttribute />} />
-          <Route path="/admin-product" element={<AdminProduct />} />
-          <Route path="/admin-attribute-detail" element={<AdminAttributeDetail />} />
 
           <Route path="/my-cards" element={<MyCard />} />
           <Route path="/personal" element={<Personal />} />
