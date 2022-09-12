@@ -9,8 +9,8 @@ export const updateProducts = (state) => {
   };
 };
 
-export const logs = () => {
-    console.log('qwe');
+export const logs = () => async (dispatch) =>{
+    
 }
 
 // const config = {

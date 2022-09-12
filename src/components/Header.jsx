@@ -13,7 +13,7 @@ const Header = () => {
         <>
             <div className="header-slider">
                 <div className="container">
-                    <Swiper 
+                    <Swiper
                         spaceBetween={30}
                         centeredSlides={true}
                         navigation={{

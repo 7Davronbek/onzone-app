@@ -1,14 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logs } from '../redux/actions/productsAction';
 
-const PopularCategory = () => {
+const PopularCategory = (props) => {
     return (
         <>
             <div className="pop-categories">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <h2>Ommabop bo'limlar</h2>
+                            <h2 onClick={() => props.logs()}>Ommabop bo'limlar</h2>
                         </div>
                     </div>
 
@@ -175,4 +177,4 @@ const PopularCategory = () => {
     )
 }
 
-export default PopularCategory
+export default connect(null, {logs})(PopularCategory)
