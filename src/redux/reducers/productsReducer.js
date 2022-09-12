@@ -3,6 +3,7 @@ import { PRODUCT_UPDATESTATE } from "../types/product";
 const initialState = {
   isLoading: false,
   error: false,
+  listCategories: []
 };
 
 export const productsReducer = (state = initialState, action) => {

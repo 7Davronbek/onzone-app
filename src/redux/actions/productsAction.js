@@ -19,3 +19,34 @@ export const logs = () => async (dispatch) =>{
 //     "Content-Type": "multipart/form-data",
 //   },
 // };
+
+
+export const getListCategory = () => async dispatch => {
+    await axios.get(API_PATH + `/uz/product/list-type-category/`)
+        .then((res) => {
+            console.log(res);
+            dispatch(updateProducts({listCategories: res.data.results}))
+        })
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

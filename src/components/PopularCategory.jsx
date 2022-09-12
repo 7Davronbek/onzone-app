@@ -1,21 +1,41 @@
 import React from 'react'
+import { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { logs } from '../redux/actions/productsAction';
+import { getListCategory } from '../redux/actions/productsAction';
 
 const PopularCategory = (props) => {
+    useEffect(() => {
+        props.getListCategory()
+    }, [])
     return (
         <>
             <div className="pop-categories">
                 <div className="container">
                     <div className="row">
                         <div className="col-12">
-                            <h2 onClick={() => props.logs()}>Ommabop bo'limlar</h2>
+                            <h2>Ommabop bo'limlar</h2>
                         </div>
                     </div>
 
                     <div className="row">
-                        <div className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                        {props.products && props.products.slice(0, 12).map((item, index) => (
+                            <>
+                                <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
+                                    <Link to={'/sub-multi-category'}>
+                                        <div className="card h-100 text-center">
+                                            <div className="card-body">
+                                                <div className="cardImg">
+                                                    <img src={item.image} alt="" />
+                                                </div>
+                                                <p>{item.name}</p>
+                                            </div>
+                                        </div>
+                                    </Link>
+                                </div>
+                            </>
+                        ))}
+                        {/* <div className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
                             <Link to={'/sub-multi-category'}>
                                 <div className="card h-100 text-center">
                                     <div className="card-body">
@@ -169,7 +189,7 @@ const PopularCategory = (props) => {
                                     </div>
                                 </div>
                             </Link>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -177,4 +197,10 @@ const PopularCategory = (props) => {
     )
 }
 
-export default connect(null, {logs})(PopularCategory)
+const mapStateToProps = state => {
+    return {
+        products: state.products.listCategories
+    }
+}
+
+export default connect(mapStateToProps, { getListCategory })(PopularCategory)
