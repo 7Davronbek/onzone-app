@@ -22,7 +22,7 @@ const PopularCategory = (props) => {
                         {props.products && props.products.slice(0, 12).map((item, index) => (
                             <>
                                 <div key={index} className="col-6 col-sm-4 col-md-3 col-lg-2 mb-4">
-                                    <Link to={'/sub-multi-category'}>
+                                    <Link to={`/sub-multi-category/${item.id}`}>
                                         <div className="card h-100 text-center">
                                             <div className="card-body">
                                                 <div className="cardImg">
