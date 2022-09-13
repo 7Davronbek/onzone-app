@@ -2,8 +2,10 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { getCategory } from '../../redux/actions/productsAction'
 
-const SidebarAllCategory = () => {
+const SidebarAllCategory = (props) => {
     return (
         <>
             <div className="leftCards myShadow">
@@ -33,4 +35,4 @@ const SidebarAllCategory = () => {
     )
 }
 
-export default SidebarAllCategory
+export default connect(null, getCategory)(SidebarAllCategory)

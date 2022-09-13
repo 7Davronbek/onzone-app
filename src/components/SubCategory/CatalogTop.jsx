@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const CatalogTop = () => {
+const CatalogTop = ({setFilter}) => {
     return (
         <>
             <div className="catalogTop">
@@ -17,7 +17,7 @@ const CatalogTop = () => {
                         <div className="col-12 filterBtn">
                             <h1 className="w-75">Telefonlar va gadjetlar</h1>
 
-                            <div onclick="handleClick()" className="filter">
+                            <div style={{cursor: "pointer"}} onClick={() => setFilter(true)} className="filter">
                                 Filtrlar <span><img src="/image/filter.svg" alt="" /></span>
                             </div>
 
