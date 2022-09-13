@@ -9,7 +9,7 @@ const SidebarAllCategory = (props) => {
     return (
         <>
             <div className="leftCards myShadow">
-                <Link className="active" to={'/sub-category'}>
+                <Link className="active" to={'/sub-category'}> 
                     Telefonlar va gadjetlar <FontAwesomeIcon icon={faAngleRight} />
                 </Link>
                 <Link to={'/sub-multi-category'}>
