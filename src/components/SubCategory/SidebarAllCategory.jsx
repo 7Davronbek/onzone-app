@@ -6,10 +6,16 @@ import { connect } from 'react-redux'
 import { getCategory } from '../../redux/actions/productsAction'
 
 const SidebarAllCategory = (props) => {
+    console.log(props);
     return (
         <>
             <div className="leftCards myShadow">
-                <Link className="active" to={'/sub-category'}> 
+                {props.listCategories && props.listCategories.map((item) => (
+                    <Link key={item.id} className="" to={`/sub-category/${item.id}`}>
+                        {item.name} <FontAwesomeIcon icon={faAngleRight} />
+                    </Link>
+                ))}
+                {/* <Link className="active" to={'/sub-category'}>
                     Telefonlar va gadjetlar <FontAwesomeIcon icon={faAngleRight} />
                 </Link>
                 <Link to={'/sub-multi-category'}>
@@ -29,10 +35,16 @@ const SidebarAllCategory = (props) => {
                 </a>
                 <a className="" href="./delivery">
                     Kompyuterlar va orgtexnika <FontAwesomeIcon icon={faAngleRight} />
-                </a>
+                </a> */}
             </div>
         </>
     )
 }
 
-export default connect(null, getCategory)(SidebarAllCategory)
+const mapStateToProps = state => {
+    return {
+        listCategories: state.products.listCategories
+    }
+}
+
+export default connect(mapStateToProps, getCategory)(SidebarAllCategory)
