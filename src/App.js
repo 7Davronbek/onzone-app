@@ -37,7 +37,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/all-category" element={<AllCategory />} />
-          <Route path="/sub-category" element={<SubCategory />} />
+          <Route path="/sub-category/:id" element={<SubCategory />} />
           <Route path="/sub-multi-category" element={<SubMultiCategory />} />
           <Route path="/product" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
