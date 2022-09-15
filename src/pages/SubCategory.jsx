@@ -11,8 +11,10 @@ import SidebarAllCategory from '../components/SubCategory/SidebarAllCategory'
 const SubCategory = () => {
     const [filter, setFilter] = useState(false)
     const location = useLocation()
-    const path = location.pathname.split('/')[2]
-    console.log(path);
+    const path = location.pathname.split('/')[2] 
+
+
+    
     return (
         <>
             <div className="catalog">
